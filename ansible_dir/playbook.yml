@@ -1,0 +1,31 @@
+- name: Mon Playbook
+  hosts: all
+  become: yes
+  vars:
+    var_web: "main_var"
+  tasks:
+  - name: check connection
+    ping:
+
+  - name: create /tmp/charles/1
+    file: 
+      path: "/tmp/charles/1"
+      recurse: yes
+      state: directory
+      owner: root
+      group: root
+      mode: 0755
+
+  - name: create test file
+    file:
+      path: "/tmp/charles/1/test.txt"
+      state: touch
+      owner: root
+      group: root
+      mode: 0755
+
+  - name: delete test file
+    file:
+      path: "/tmp/charles/1/test.txt"
+      state: absent
+
